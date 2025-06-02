@@ -39,9 +39,23 @@
   
     {% include navbar.html %}
     <div class="wrapper">
-      <header class="header">
-        <h1 class="header-title center" itemprop="headline">{{ page.title | escape }}.</h1>
+      <header>
+        <div class="inner">
+          <a href="{{ '/' | absolute_url }}">
+            <h1>{{ site.title | default: site.github.repository_name }}</h1>
+          </a>
+          <h2>{{ site.description | default: site.github.project_tagline }}</h2>
+          {% if site.github.is_project_page %}
+            <a href="{{ site.github.repository_url }}" class="button"><small>View project on</small> GitHub</a>
+          {% endif %}
+          {% if site.github.is_user_page %}
+            <a href="{{ site.github.owner_url }}" class="button"><small>Follow me on</small> GitHub</a>
+          {% endif %}
+        </div>
       </header>
+  
+    
+      
       <main class="page-content" aria-label="Content">
         {% include anchor_headings.html html=content anchorClass="anchor-head" beforeHeading=true h_min=4 h_max=4 %}
       </main>
